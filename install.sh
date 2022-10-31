@@ -88,7 +88,7 @@ function system_check() {
     ${INS} wget
     wget -N -P /etc/yum.repos.d/ https://raw.githubusercontent.com/wulabing/Xray_onekey/${github_branch}/basic/nginx.repo
 
-  elif [[ "${ID}" == "rocky" && ${VERSION_ID} -ge 7 ]]; then
+  elif [[ "${ID}" == "rocky" $(echo "${VERSION_ID} > 7" |bc -l)]]; then
     print_ok "当前系统为 Rocky Linux ${VERSION_ID} ${VERSION}"
     INS="yum install -y"
     ${INS} wget
